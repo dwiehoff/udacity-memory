@@ -77,12 +77,12 @@ function doMove() {
 		thirdStar.classList.remove('fa-star');
 		thirdStar.classList.add('fa-star-o');
 	}
-	if (move >= 24) {
+	if (move >= 26) {
 		let secondStar = document.querySelector('.stars > li:nth-child(2) > i');
 		secondStar.classList.remove('fa-star');
 		secondStar.classList.add('fa-star-o');
 	}
-	if (move > 30) {
+	if (move > 45) {
 		let firstStar = document.querySelector('.stars > li:nth-child(1) > i');
 		firstStar.classList.remove('fa-star');
 		firstStar.classList.add('fa-star-o');
@@ -130,6 +130,8 @@ var move = 0;
 var pairs = 0;
 
 function match() {
+	openCards[0].setAttribute('class', 'card match');
+	openCards[1].setAttribute('class', 'card match');
 	console.log("It's a match.");
 	openCards = [];
 	pairs++;
@@ -161,15 +163,15 @@ function nomatch() {
 function won() {
 	if (pairs >= 8) {
 		console.log("You did it!");
+		console.log("Your final score is: " + move + " moves.");
 	}
 }
 
 function reload() {
-
+	location.reload();
 }
 
-
-
+document.querySelector(".restart").addEventListener('click', reload);
 
 
 
