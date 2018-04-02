@@ -193,6 +193,7 @@ let secs = 0;
 
 function count() {
 	secs ++;
+	document.querySelector('.time').textContent = secs;
 }
 
 document.querySelector(".restart").addEventListener('click', reload);
