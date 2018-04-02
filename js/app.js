@@ -67,8 +67,13 @@ displayCards();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+let timer = null;
+let stars = 3;
+
 function doMove() {
 	move++;
+	if (timer == null)
+		timer = setInterval(count, 1000);
 	moveEl = document.querySelector('.moves');
 	moveEl.textContent = move;
 
@@ -77,7 +82,7 @@ function doMove() {
 		thirdStar.classList.remove('fa-star');
 		thirdStar.classList.add('fa-star-o');
 	}
-	if (move >= 26) {
+	if (move >= 28) {
 		let secondStar = document.querySelector('.stars > li:nth-child(2) > i');
 		secondStar.classList.remove('fa-star');
 		secondStar.classList.add('fa-star-o');
@@ -162,13 +167,32 @@ function nomatch() {
 
 function won() {
 	if (pairs >= 8) {
+		clearInterval(timer);
 		console.log("You did it!");
 		console.log("Your final score is: " + move + " moves.");
+		switch (true) {
+			case move >= 45: stars = 0; break;
+			case move >= 28: stars = 1; break;
+			case move >= 16: stars = 2; break;
+			default: stars = 3;
+		}
+		let res = window.confirm("Congratulations! You took " + secs + " seconds. Your star rating is " + stars + ". Want to play again?");
+		if (res == true) {
+			reload();
+		} else {
+
+		}
 	}
 }
 
 function reload() {
 	location.reload();
+}
+
+let secs = 0;
+
+function count() {
+	secs ++;
 }
 
 document.querySelector(".restart").addEventListener('click', reload);
