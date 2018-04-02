@@ -2,6 +2,21 @@
  * Create a list that holds all of your cards
  */
 
+/* const cards = document.getElementsByClassName('card');
+
+const cardsArr = [];
+
+[].forEach.call(cards, function(card) {
+	cardsArr.push(card);
+	card.setAttribute('class', 'card open show');
+});
+
+const shuffledCardsArr = shuffle(cardsArr);
+
+
+console.log(cards[0]); */
+
+let cardsArr = ["diamond", "paper-plane-o", "anchor", "bolt", "cube", "anchor", "leaf", "bicycle", "diamond", "bomb", "leaf", "bomb", "bolt", "bicycle", "paper-plane-o", "cube"];
 
 /*
  * Display the cards on the page
@@ -24,6 +39,20 @@ function shuffle(array) {
 
     return array;
 }
+
+function displayCards(array) {
+	let shuffledArr = shuffle(cardsArr);
+	const cards = document.getElementsByClassName('card');
+	for (let i=0; i<16; i++) {
+		// cards[i].setAttribute('class', 'card open show');
+		let el = document.createElement('i');
+		el.setAttribute('class', 'fa fa-' + shuffledArr[i]);
+		cards[i].removeChild(cards[i].children[0]);
+		cards[i].appendChild(el);
+	}
+}
+
+displayCards();
 
 
 /*
