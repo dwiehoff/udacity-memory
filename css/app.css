@@ -86,6 +86,9 @@ h1 {
  */
 
 .score-panel {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
@@ -100,10 +103,44 @@ h1 {
 
 .score-panel .stars li {
     list-style: none;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 750px) {
+    .deck {
+        width: 453px;
+        min-height: 453px;
+        padding: 21px;
+    }
+    .deck .card {
+        height: 83px;
+        width: 83px;
+    }
+    .score-panel {
+        font-size: 18px;
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .deck {
+        width: 330px;
+        min-height: 340px;
+        padding: 16px;
+    }
+    .deck .card {
+        height: 62px;
+        width: 62px;
+    }
+    .score-panel {
+        font-size: 14px;
+        width: 285px;
+    }
 }
