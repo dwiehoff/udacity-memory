@@ -42,6 +42,7 @@ function shuffle(array) {
 
 function displayCards(array) {
 	let shuffledArr = shuffle(cardsArr);
+	cardsArr = shuffledArr;
 	const cards = document.getElementsByClassName('card');
 	for (let i=0; i<16; i++) {
 		// cards[i].setAttribute('class', 'card open show');
@@ -65,3 +66,37 @@ displayCards();
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+function toggleCard(card) {
+	card.classList.toggle('show');
+	card.classList.toggle('open');
+	card.removeEventListener('click', tgl);
+}
+
+let tgl = function(e) { toggleCard(e.target.param); };
+
+function clickable() {
+	const cards = document.getElementsByClassName('card');
+	for (let i=0; i<16; i++) {
+		cards[i].addEventListener('click', tgl);
+		cards[i].param = cards[i];
+	}
+}
+clickable();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
