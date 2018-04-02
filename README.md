@@ -15,7 +15,7 @@ This is a very simple memory game that works across browsers and devices. It cur
 * a reload function.
 
 
-No dependencies.
+No dependencies. The project is based on the starter files provided by Udacity.
 
 ## Contributing
 
