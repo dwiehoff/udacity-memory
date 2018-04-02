@@ -2,20 +2,6 @@
  * Create a list that holds all of your cards
  */
 
-/* const cards = document.getElementsByClassName('card');
-
-const cardsArr = [];
-
-[].forEach.call(cards, function(card) {
-	cardsArr.push(card);
-	card.setAttribute('class', 'card open show');
-});
-
-const shuffledCardsArr = shuffle(cardsArr);
-
-
-console.log(cards[0]); */
-
 let cardsArr = ["diamond", "paper-plane-o", "anchor", "bolt", "cube", "anchor", "leaf", "bicycle", "diamond", "bomb", "leaf", "bomb", "bolt", "bicycle", "paper-plane-o", "cube"];
 
 /*
@@ -69,6 +55,11 @@ displayCards();
 
 let timer = null;
 let stars = 3;
+let secs = 0;
+let tgl = function(e) { toggleCard(e.target.param); };
+let openCards = [];
+var move = 0;
+var pairs = 0;
 
 function doMove() {
 	move++;
@@ -109,8 +100,6 @@ function toggleCard(card) {
 	card.removeEventListener('click', tgl);
 }
 
-let tgl = function(e) { toggleCard(e.target.param); };
-
 function clickable() {
 	const cards = document.getElementsByClassName('card');
 	for (let i=0; i<16; i++) {
@@ -120,19 +109,10 @@ function clickable() {
 }
 clickable();
 
-let openCards = [];
-
 function addOpenCard(card) {
 	openCards.push(card);
 	console.log(openCards);
-	/* 
-	if (card.firstElementChild.className == "fa fa-bicycle") {
-		console.log("that's a bicycle");
-	} */
 }
-
-var move = 0;
-var pairs = 0;
 
 function match() {
 	openCards[0].setAttribute('class', 'card match');
@@ -188,8 +168,6 @@ function won() {
 function reload() {
 	location.reload();
 }
-
-let secs = 0;
 
 function count() {
 	secs ++;
