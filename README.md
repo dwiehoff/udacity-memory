@@ -14,6 +14,8 @@ This is a very simple memory game that works across browsers and devices. It cur
 * a step counter,
 * a reload function.
 
+You can view the game [here](https://dwiehoff.github.io/udacity-memory/).
+
 
 No dependencies. The project is based on the starter files provided by Udacity.
 
