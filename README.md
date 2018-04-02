@@ -4,6 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [TODO](#TODO)
 
 ## Instructions
 
@@ -20,7 +21,7 @@ No dependencies.
 
 No contributions accepted at this time.
 
-## TO DO
+## TODO
 
 * Animations
 * Styling
