@@ -67,9 +67,40 @@ displayCards();
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+function doMove() {
+	move++;
+	moveEl = document.querySelector('.moves');
+	moveEl.textContent = move;
+
+	if (move >= 16) {
+		let thirdStar = document.querySelector('.stars > li:nth-child(3) > i');
+		thirdStar.classList.remove('fa-star');
+		thirdStar.classList.add('fa-star-o');
+	}
+	if (move >= 24) {
+		let secondStar = document.querySelector('.stars > li:nth-child(2) > i');
+		secondStar.classList.remove('fa-star');
+		secondStar.classList.add('fa-star-o');
+	}
+	if (move > 30) {
+		let firstStar = document.querySelector('.stars > li:nth-child(1) > i');
+		firstStar.classList.remove('fa-star');
+		firstStar.classList.add('fa-star-o');
+	}
+}
+
 function toggleCard(card) {
 	card.classList.toggle('show');
 	card.classList.toggle('open');
+	addOpenCard(card);
+	if (openCards.length > 1) {
+		if (openCards[0].firstElementChild.className == openCards[1].firstElementChild.className) {
+			match();
+		} else {
+			nomatch();
+		}
+	}
+	doMove();
 	card.removeEventListener('click', tgl);
 }
 
@@ -84,9 +115,58 @@ function clickable() {
 }
 clickable();
 
+let openCards = [];
 
+function addOpenCard(card) {
+	openCards.push(card);
+	console.log(openCards);
+	/* 
+	if (card.firstElementChild.className == "fa fa-bicycle") {
+		console.log("that's a bicycle");
+	} */
+}
 
+var move = 0;
+var pairs = 0;
 
+function match() {
+	console.log("It's a match.");
+	openCards = [];
+	pairs++;
+	won();
+}
+
+function handler(e) { // prevent clicking while cards turn
+	e.stopPropagation();
+	e.preventDefault();
+}
+
+function hideCards() {
+	openCards[0].classList.remove('show');
+	openCards[0].classList.remove('open');
+	openCards[0].addEventListener('click', tgl);
+	openCards[1].classList.remove('show');
+	openCards[1].classList.remove('open');
+	openCards[1].addEventListener('click', tgl);
+	openCards = [];
+	document.removeEventListener('click', handler, true);
+}
+
+function nomatch() {
+	document.addEventListener('click', handler, true);
+	console.log("Not a match. Keep trying.");
+	window.setTimeout(hideCards, 1000);
+}
+
+function won() {
+	if (pairs >= 8) {
+		console.log("You did it!");
+	}
+}
+
+function reload() {
+
+}
 
 
 
