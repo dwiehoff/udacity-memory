@@ -19,3 +19,9 @@ No dependencies.
 ## Contributing
 
 No contributions accepted at this time.
+
+## TO DO
+
+* Animations
+* Styling
+* ...
